@@ -14,6 +14,8 @@
 
 Route::get('/', 'DashboardController@index');
 
+Route::resource('blog','BlogController');
+
 Route::get('/main', function () {
     return view('main');
 });
