@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-      return redirect('/main');
+      return redirect('/home');
     }
 }

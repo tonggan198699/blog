@@ -10,12 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::get('/', 'DashboardController@index');
-
-Route::resource('blog','BlogController');
-
-Route::get('/main', function () {
-    return view('main');
-});
+Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('posts','PostController');
