@@ -11,12 +11,15 @@
                         @foreach($posts as $post)
                             <article>
                                 <h4>
-                                {{ $post->title }}
+                                  <a href="{{ route('posts.show', $posts->first()) }}">
+                                      {{ $post->title }}
+                                  </a>
                                 </h4>
                                 <div class="body">{{$post->content}}</div>
                             </article>
                             <hr>
                         @endforeach
+
                     </div>
 
                 </div>
