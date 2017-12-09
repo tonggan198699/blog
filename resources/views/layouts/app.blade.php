@@ -28,7 +28,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/posts') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         Home
                     </a>
                 </div>
@@ -37,6 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                         <li><a href="/posts">All Posts</a></li> &nbsp;
                     </ul>
 
                     <!-- Right Side Of Navbar -->

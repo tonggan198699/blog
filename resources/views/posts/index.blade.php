@@ -11,7 +11,7 @@
                         @foreach($posts as $post)
                             <article>
                                 <h4>
-                                  <a href="{{ route('posts.show', $post->id) }}">
+                                  <a href="{{ $post->path() }}">
                                       {{ $post->title }}
                                   </a>
                                 </h4>
