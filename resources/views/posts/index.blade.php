@@ -11,14 +11,18 @@
                         @foreach($posts as $post)
                             <article>
                                 <h4>
-                                  <a href="{{ route('posts.show', $posts->first()) }}">
+                                  <a href="{{ route('posts.show', $post->id) }}">
                                       {{ $post->title }}
                                   </a>
                                 </h4>
                                 <div class="body">{{$post->content}}</div>
                             </article>
+
+                            <div class="pull-right">Created at {{ $post->created_at->diffForHumans() }}</div>
                             <hr>
                         @endforeach
+
+                        <span class="pull-right"> {{ $posts->links() }} </span>
 
                     </div>
 

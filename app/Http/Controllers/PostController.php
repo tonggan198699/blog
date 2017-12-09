@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+     protected $postPerPage = 5;
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-      $posts = Post::latest()->get();
+      $posts = Post::latest()->paginate($this->postPerPage);;
 
       return view('posts.index', compact('posts'));
     }
