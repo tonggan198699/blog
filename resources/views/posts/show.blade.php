@@ -15,18 +15,12 @@
             </div>
         </div>
 
-        @foreach($post->replies as $reply)
-            <div class="panel panel-default">
-
-                <div class="panel-heading">
-                    <strong>{{$reply->owner->name}}</strong> said {{$reply->created_at->diffForHumans()}}
-                </div>
-
-                <div class="panel-body">
-                      {{ $reply->content }}
-                </div>
-            </div>
-        @endforeach
-
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              @foreach($post->replies as $reply)
+                @include('posts.reply')
+              @endforeach
+            </div>   
+          </div>
     </div>
 @endsection
