@@ -23,7 +23,6 @@
                         @endforeach
 
                         <span class="pull-right"> {{ $posts->links() }} </span>
-
                     </div>
 
                 </div>
