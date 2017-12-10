@@ -22,12 +22,7 @@ class PostController extends Controller
      */
     public function index()
     {
-      if($username = request('by')) {
-        $user = User::where('name', $username)->firstOrFail();
-        $posts->where('user_id', $user->id);
-      }
-      
-      $posts = Post::latest()->paginate($this->postPerPage);;
+      $posts = $this->getPosts();
 
       return view('posts.index', compact('posts'));
     }
@@ -109,4 +104,17 @@ class PostController extends Controller
     {
         //
     }
+
+    protected function getPosts()
+    {
+      $posts = Post::latest()->paginate($this->postPerPage);
+
+      if($username = request('by')) {
+        $user = User::where('name', $username)->firstOrFail();
+        $posts->where('user_id', $user->id);
+      }
+
+      return $posts;
+    }
+
 }
