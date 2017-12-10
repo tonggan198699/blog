@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use App\Filters\PostFilters;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
      protected $postPerPage = 5;
+
+     protected $filters = ['by'];
 
      public function __construct()
      {
@@ -20,9 +23,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(PostFilters $filters)
     {
-      $posts = $this->getPosts();
+      $posts = $this->getPosts($filters);
 
       return view('posts.index', compact('posts'));
     }
@@ -105,15 +108,11 @@ class PostController extends Controller
         //
     }
 
-    protected function getPosts()
+    protected function getPosts(PostFilters $filters)
     {
-      $posts = Post::latest()->paginate($this->postPerPage);
+      $posts = Post::latest()->filter($filters);
 
-      if($username = request('by')) {
-        $user = User::where('name', $username)->firstOrFail();
-        $posts->where('user_id', $user->id);
-      }
-
+      $posts = $posts->paginate($this->postPerPage);
       return $posts;
     }
 
