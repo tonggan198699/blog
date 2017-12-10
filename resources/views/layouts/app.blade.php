@@ -39,6 +39,9 @@
                         &nbsp;
                          <li><a href="/posts">All Posts</a></li> &nbsp;
                          <li><a href="/posts/create">New Post</a></li>&nbsp;
+                         @if(auth()->check())
+                          <li><a href="/posts?by={{ auth()->user()->name }}">My Posts</a></li>&nbsp;
+                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

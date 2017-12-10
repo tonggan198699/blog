@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -21,6 +22,11 @@ class PostController extends Controller
      */
     public function index()
     {
+      if($username = request('by')) {
+        $user = User::where('name', $username)->firstOrFail();
+        $posts->where('user_id', $user->id);
+      }
+      
       $posts = Post::latest()->paginate($this->postPerPage);;
 
       return view('posts.index', compact('posts'));
