@@ -8,6 +8,18 @@
                     <div class="panel-heading">
                       <a href="#">{{ $post->creator->name }}</a> posted:
                       {{ $post->title }}
+
+                      @can('update', $post)
+                      <div class="pull-right">
+                        <form action="{{ $post->path() }}" method="POST">
+                          {{ csrf_field() }}
+                          {{ method_field('DELETE') }}
+
+                          <button type="submit" class="btn btn-link">Delete Post</button>
+                        </form>
+                      </div>
+                      @endcan
+
                     </div>
 
                     <div class="panel-body">
@@ -38,6 +50,7 @@
                     <button type="submit" class="btn btn-default">Post</button>
                   </form>
                 </div>
+
             </div>
 
         @else

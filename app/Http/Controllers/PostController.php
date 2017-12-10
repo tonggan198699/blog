@@ -15,7 +15,7 @@ class PostController extends Controller
 
      public function __construct()
      {
-       $this->middleware('auth')->only('create','store');
+       $this->middleware('auth')->except(['index', 'show']);
      }
 
     /**
@@ -103,11 +103,20 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, Request $request)
     {
-        //
+      $this->authorize('update', $post);
+      $post->replies()->delete();
+      $post->delete();
+
+      return redirect('/posts');
+
     }
 
+    /**
+   * @param PostFilters $filters
+   * @return mixed
+   */
     protected function getPosts(PostFilters $filters)
     {
       $posts = Post::latest()->filter($filters);
