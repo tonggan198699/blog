@@ -12,12 +12,7 @@ class Post extends Model
 
   public function path()
   {
-     return '/posts/' . $this->id ;
-  }
-
-  public function replies()
-  {
-    return $this->hasMany(Reply::class);
+     return "/posts/{$this->id}";
   }
 
   public function creator()
@@ -25,9 +20,14 @@ class Post extends Model
     return $this->belongsTo(User::class, 'user_id');
   }
 
+  public function replies()
+  {
+      return $this->hasMany(Reply::class);
+  }
+
   public function addReply($reply)
   {
-    $this->replies()->create($reply);
+      $this->replies()->create($reply);
   }
 
 }

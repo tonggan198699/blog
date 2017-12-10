@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Http\Request;
 
 class RepliesController extends Controller
 {
@@ -12,8 +12,14 @@ class RepliesController extends Controller
       $this->middleware('auth');
     }
 
+    /**
+      * @param Post $post
+      * @return \Illuminate\Http\RedirectResponse
+      */
     public function store(Post $post)
     {
+      $this->validate(request(), ['content' => 'required']);
+
       $post->addReply([
           'content' => request('content'),
           'user_id' => auth()->id()
@@ -21,7 +27,6 @@ class RepliesController extends Controller
 
       return back();
     }
-
 
 
 }
