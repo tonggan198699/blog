@@ -13,20 +13,29 @@
 
                     <div class="form-group">
                         <label for="title">Post Title:</label>
-                          <input name="title" class="form-control" id="title">
+                          <input name="title" class="form-control" id="title" value="{{ old('title') }}">
                     </div>
 
                     <div class="form-group">
                         <label for="content">Post Content:</label>
-                          <textarea name="content" class="form-control" id="content" rows="8"></textarea>
+                          <textarea name="content" class="form-control" id="content" rows="8">{{ old('content') }}</textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Publish</button>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary">Publish</button>
+                    </div>
+
+                    @if(count($errors))
+                      <ul class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    @endif
 
                   </form>
               </div>
 
-          </div>  
+          </div>
         </div>
       </div>
   </div>
