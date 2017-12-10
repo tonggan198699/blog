@@ -38,6 +38,7 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                          <li><a href="/posts">All Posts</a></li> &nbsp;
+                         <li><a href="/posts/create">New Post</a></li>&nbsp;
                     </ul>
 
                     <!-- Right Side Of Navbar -->

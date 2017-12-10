@@ -11,7 +11,7 @@ class PostController extends Controller
 
      public function __construct()
      {
-       $this->middleware('auth')->only('store');
+       $this->middleware('auth')->only('create','store');
      }
 
     /**
@@ -33,7 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
