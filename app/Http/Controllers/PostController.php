@@ -9,6 +9,11 @@ class PostController extends Controller
 {
      protected $postPerPage = 5;
 
+     public function __construct()
+     {
+       $this->middleware('auth')->only('store');
+     }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +44,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create([
+          'user_id' => auth()->id(),
+          'title' => request('title'),
+          'content' => request('content')
+        ]);
+
+        $post->save();
+        return redirect($post->path());
     }
 
     /**
