@@ -9,7 +9,12 @@
                       <a href="#">{{ $post->creator->name }}</a> posted:
                       {{ $post->title }}
 
-                      @can('update', $post)
+                    @can('update', $post)
+                      <div class="pull-right">
+                          <a type="button" class="btn btn-link" href="{{ route('posts.edit', $post->id) }}">Edit Post</a>
+                      </div>
+
+
                       <div class="pull-right">
                         <form action="{{ $post->path() }}" method="POST">
                           {{ csrf_field() }}
@@ -18,7 +23,7 @@
                           <button type="submit" class="btn btn-link">Delete Post</button>
                         </form>
                       </div>
-                      @endcan
+                    @endcan
 
                     </div>
 
@@ -56,9 +61,6 @@
         @else
         <p class="text-center">Please <a href="{{ route('login') }}"> Sign In</a> to have your say in the blog.</p>
         @endif
-
-
-
 
     </div>
 @endsection

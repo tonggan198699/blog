@@ -82,7 +82,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -94,7 +94,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+      $this->authorize('update', $post);
+      $requestData = $this->validate($request, [
+        'title' => 'required',
+        'content' => 'required'
+      ]);
+
+      $post->update($requestData);
+
+      return redirect('/posts');
     }
 
     /**
