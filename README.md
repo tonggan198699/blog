@@ -12,20 +12,20 @@ This blog is created as part of the Freddie’s Flowers Code Challenge. The proj
 
 # Application pictures
 
-Register as a new user
+**Register as a new user**
 <p align="center"><img src="https://image.ibb.co/jQVmMw/blog1.jpg"></p>
 
-Logging in as tong
+**Logging in as tong**
 <p align="center"><img src="https://image.ibb.co/mEOdZG/blog2.jpg"></p>
 
-You can view all the existing post as a guest, but must login to post or reply
+**You can view all the existing post as a guest, but must login to post or reply**
 <p align="center"><img src="https://image.ibb.co/njGhuG/blog3.jpg"></p>
 
-You can create a new post
+**You can create a new post**
 <p align="center"><img src="https://image.ibb.co/hYoCuG/blog4.jpg"></p>
 
-You can delete or edit only to your own posts or replies
+**You can delete or edit only to your own posts or replies**
 <p align="center"><img src="https://image.ibb.co/ih06ob/blog5.jpg"></p>
 
-An example of peter replying to tong's post
+**An example of peter replying to tong's post**
 <p align="center"><img src="https://image.ibb.co/f59z8b/blog6.jpg"></p>
